@@ -5,6 +5,9 @@ const {
   viewVehicles,
   bookService,
   viewServiceReq,
+  viewUserDetails,
+  removeVehicle,
+  modifyName,
 } = require("../../../../controllers/api/user");
 const router = express.Router();
 
@@ -12,6 +15,12 @@ router.post(
   "/add-vehicle",
   passport.authenticate("customer", { session: false }),
   addVehicle
+);
+
+router.post(
+  "/remove-vehicle",
+  passport.authenticate("customer", { session: false }),
+  removeVehicle
 );
 
 router.get(
@@ -30,6 +39,18 @@ router.get(
   "/view-service-req",
   passport.authenticate("customer", { session: false }),
   viewServiceReq
+);
+
+router.get(
+  "/view-user-details",
+  passport.authenticate("customer", { session: false }),
+  viewUserDetails
+);
+
+router.post(
+  "/modify-name",
+  passport.authenticate("customer", { session: false }),
+  modifyName
 );
 
 module.exports = router;
